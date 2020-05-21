@@ -16,7 +16,7 @@ It will take a little while to run.
 a. We will want to open the following files in afni: results, our scan bucket, and a template brain (to use as underlay). I have copied a template to the current directory for ease.   
 b. All the data are in MNI space but the header for 3dttest output needs to be edited to reflect this (same for the scan_bucket).  
 ``` bash
-3drefit -space MNI aces_result.nii.gz
+3drefit -space MNI aces_result_clustsim.nii.gz
 3drefit -space MNI scan_bucket.nii.gz
 afni template.nii.gz aces_result_clustsim.nii.gz scan_bucket.nii.gz
 ```
