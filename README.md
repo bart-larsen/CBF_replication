@@ -48,11 +48,11 @@ c. Alpha tells you the cluster-level p-value (bummer, it is not significant here
 11. Super cool feature. We can now view the average value for that cluster across our input dataset, the `scan_bucket.nii.gz`.  
 a. Click on the white arrow next to the header row options. It will bring up a hidden menu.  
 b. Click on `AUX` in the first row and select `scan_bucket.nii.gz`.  
-![bisided](tutorial/bisided.png). 
+![aux](tutorial/aux.png). 
 12. Now click the white arrow again to close the menu.  
 13. On the row for cluster #1, click `PLOT`. This will now plot the average value for all the subjects!  
 a. In this case we can see we had an outlier that is probably messing things up.  
-![bisided](tutorial/bisided.png). 
+![auxplot](tutorial/aux_plot.png). 
 14. NOTE: Adjusting the slider threshold in the AFNI GUI will update the clusterize rpt (try setting p = .05 or p = .001).  
 15. If you want to save the cluster results, you can click `Write`. This will create the file `Clust_mask_0001+tlrc.BRIK` in your current directory.  
 a. In this case with only one cluster, the file will have `1` for the voxels in the cluster and `0` for everything else. You can overlay on a template like a mask.  
