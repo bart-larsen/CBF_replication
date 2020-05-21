@@ -43,4 +43,4 @@ scans=$(cat $scan_file)
 ## ClustSim uses random permutations of your dataset to simulate the null model for your cluster correction.
 ## It is super convenient because 1) it does everything for you, and 2) it appends the output to your output .nii.gz file which makes it super easy to visualize your results.
 
-3dttest++ -prefix aces_result_clustsim.nii.gz -overwrite -mask $mask -setA cbf $scans -covariates $cov_file -Clustsim 20
+3dttest++ -prefix aces_result_clustsim.nii.gz -overwrite -mask $mask -setA cbf $scans -covariates $cov_file -Clustsim 30
