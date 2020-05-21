@@ -40,8 +40,8 @@ a. change bi-sided? to `Yes`.
 ![bisided](tutorial/bisided.png). 
 8. Click on `Rpt` to see the results.  
 9. Now we see a list of all clusters that are greater than 20 voxels at p = .01.  
-a. `Size` is number of voxels in the cluster.
-b. X, Y, Z coordinates of the peak voxel
+a. `Size` is number of voxels in the cluster.  
+b. X, Y, Z coordinates of the peak voxel. 
 c. Alpha tells you the cluster-level p-value (bummer, it is not significant here).  
 ![rpt](tutorial/rpt.png). 
 10. Click `Jump` to jump to the peak voxel of the cluster and `Flash` to flash the voxels that are in the cluster.  
