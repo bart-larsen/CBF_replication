@@ -31,7 +31,7 @@ while IFS=, read bblid age_months sex aces_score_total log_aces relMeanRMSMotion
 		# we need to smooth
 		# check if we already have a smoothed file
 		smooth_filename="sub-${bblid}_cbfStd_sm${FWHM}.nii.gz"
-		if [ ! -e ${dataDir}/${smooth_filename} ]; 
+		if [ ! -e ${dataDir}/${smooth_filename} ]; then
 			#sub_mask=${dataDir}/sub-${bblid}_maskStd.nii.gz
 			3dBlurToFWHM -FWHM $FWHM -automask -prefix ${dataDir}/${smooth_filename} -input ${dataDir}/"sub-${bblid}_cbfStd.nii.gz"
 		fi
