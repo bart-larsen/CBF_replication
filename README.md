@@ -1,7 +1,7 @@
 # CBF_replication
 This code replicates the CBF ACEs analysis and also includes a tutorial for group analysis using AFNI.  
 
-The data have already been preprocess and summary statistics and demographics have been organized here:  
+The data have already been preprocessed and summary statistics and demographics have been organized here:  
 /cbica/projects/Kristin_CBF/data/aces_flameo_2/model_aces.csv 
 
 ## Running the model
