@@ -30,7 +30,7 @@ while IFS=, read bblid age_months sex aces_score_total log_aces relMeanRMSMotion
 		smooth_filename="sub-${bblid}_cbfStd_sm${FWHM}.nii.gz"
 		if [ ! -e ${dataDir}/${smooth_filename} ]; 
 			#sub_mask=${dataDir}/sub-${bblid}_maskStd.nii.gz
-			3dBlurToFWHM -FWHM $FWHM -automask -prefix ${dataDir}/${smooth_filename}
+			3dBlurToFWHM -FWHM $FWHM -automask -prefix ${dataDir}/${smooth_filename} -input ${dataDir}/"sub-${bblid}_cbfStd.nii.gz"
 		fi
 		scan_filename=${smooth_filename}
 	else
