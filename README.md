@@ -24,10 +24,10 @@ afni template.nii.gz aces_result_clustsim.nii.gz scan_bucket.nii.gz
 ### Navigating the AFNI viewer
 1. Click on `underlay` and set to template.nii.gz. Click on `overlay` and set to aces_results_clustsim.nii.gz
 ![underlay and overlay](tutorial/ulay_olay.png). 
-2. We are interested in the effect of aces, so we need to select this image from the overlay. This is done on the Olay and Thr dropdown menu.  
+2. We are interested in the effect of aces, so we need to select this image from the overlay. This is done on the `Olay` and `Thr` dropdown menu.  
 a. The `Olay` will be the regression coefficient `cbf_log_aces` and the `Thr` will be the Z stat `cbf_log_aces_Zscr`.  
 ![select sub-brik](tutorial/olay_select_tstat.png). 
-3. AFNI is super smart and knows the degrees of freedom of the test, so now adjust the colorbar slider (which control the Z stat threshold, will also update the p-value under the color bar)!  
+3. AFNI is super smart and knows the degrees of freedom of the test, so now adjusting the colorbar slider (which controls the Z stat threshold) will also update the p-value under the color bar!  
 ![colorbar](tutorial/colorbar.png). 
 4. We want to select an appropriate voxelwise pvalue for the cluster correction. Usually p = .001 is standard. Here we will use p = .01 to be more liberal.
 a. Right click on the `p=` text below the color bar to bring up the pval selection menu, and then select `set p value`. Type .01.  
