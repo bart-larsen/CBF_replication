@@ -7,6 +7,9 @@
 smooth=false
 FWHM=8
 
+# Number of parallel cores
+nCores=30
+
 # set variables and initialize files
 mask=/cbica/projects/Kristin_CBF/data/aces_flameo_2/included_intersection_mask.nii.gz
 cov_file="aces_covariates.txt"
@@ -47,7 +50,7 @@ while IFS=, read bblid age_months sex aces_score_total log_aces relMeanRMSMotion
 done </cbica/projects/Kristin_CBF/data/aces_flameo_2/model_aces.csv 
 
 # First concatenate all the scans (this will be useful when looking at results)
-3dbucket -prefix scan_bucket.nii.gz $(cat aces_scans.txt | cut -d' ' -f2-)
+3dbucket -prefix scan_bucket.nii.gz -overwrite $(cat aces_scans.txt | cut -d' ' -f2-)
 
 # Get the scan list of scans
 scans=$(cat $scan_file)
@@ -62,4 +65,9 @@ scans=$(cat $scan_file)
 ## ClustSim uses random permutations of your dataset to simulate the null model for your cluster correction.
 ## It is super convenient because 1) it does everything for you, and 2) it appends the output to your output .nii.gz file which makes it super easy to visualize your results.
 
-3dttest++ -prefix aces_result_clustsim.nii.gz -overwrite -mask $mask -setA cbf $scans -covariates $cov_file -Clustsim 30
+# Change output filename depending on if we are smoothing
+if [[ $smooth ]]; then
+	3dttest++ -prefix aces_result_clustsim_sm${FWHM}.nii.gz -overwrite -mask $mask -setA cbf $scans -covariates $cov_file -Clustsim $nCores
+else
+	3dttest++ -prefix aces_result_clustsim.nii.gz -overwrite -mask $mask -setA cbf $scans -covariates $cov_file -Clustsim $nCores
+fi
