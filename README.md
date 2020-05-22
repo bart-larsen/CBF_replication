@@ -7,6 +7,7 @@ The data have already been preprocessed and summary statistics and demographics 
 ## Running the model
 1. Look at the code aces_3dttest.sh to see detailed documentation.  
 a. This code uses the excellent 3dttest++ from afni to fit the model and do the cluster simulations. 
+b. You optionally smooth the data using `3dBlurToFWHM`. Set the `smooth` flag to `true` as specify desired `FWHM`.  
 
 2. We need to run the code using qsub with the `-pe threaded` flag. Let's use 30 cores. _The number of cores specified here must match the number indicated in the script_: `-ClustSim #cores`. 
 It will take a little while to run.  
