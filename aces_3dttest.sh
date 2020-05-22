@@ -1,6 +1,11 @@
 #!/bin/bash
 
 ### This script makes a list of scans and covariates to pass to afni's 3dttest++ ###
+### Update: we can now optionally smooth the data.
+
+#If smoothing is desired set this variable to true and set desired FWHM
+smooth=false
+FWHM=8
 
 # set variables and initialize files
 mask=/cbica/projects/Kristin_CBF/data/aces_flameo_2/included_intersection_mask.nii.gz
@@ -16,12 +21,26 @@ while IFS=, read bblid age_months sex aces_score_total log_aces relMeanRMSMotion
 	if [[ "$bblid" == *"bblid"* ]]; then
                 continue
 		# skip header row
-
 	fi
+
+	# Smooth if needed.
+	if [[ $smooth ]]; then
+		# we need to smooth
+		# check if we already have a smoothed file
+		smooth_filename="sub-${bblid}_cbfStd_sm${FWHM}.nii.gz"
+		if [ ! -e ${dataDir}/${smooth_filename} ]; 
+			#sub_mask=${dataDir}/sub-${bblid}_maskStd.nii.gz
+			3dBlurToFWHM -FWHM $FWHM -automask -prefix ${dataDir}/${smooth_filename}
+		fi
+		scan_filename=${smooth_filename}
+	else
+		scan_filename="sub-${bblid}_cbfStd.nii.gz"
+	fi
+		
 
 	# Append info to the scan list and covariates files.
 	sub_label="sub-${bblid}" # This is the label for the scan
-	echo "$sub_label ${dataDir}/sub-${bblid}_cbfStd.nii.gz" >> $scan_file
+	echo "$sub_label ${dataDir}/${scan_filename}" >> $scan_file
 	echo "$sub_label $age_months $sex $log_aces $relMeanRMSMotion" >> $cov_file
 
 
